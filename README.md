@@ -1,8 +1,7 @@
 # Find My AWS Idle Resources.
 With the flexible and extensive offerings of Amazon Web Services (AWS), it's easy to spin up resources when required. However, it's equally important to monitor and shut down idle resources that are no longer in use. And as a beginner we always make mistakes by spinning the resource but not stopping when it is idle.
 This repo aims to find idle RDS instance, ELB and also running EC2 instance.
-
-**Please note that it is recommended to try this tutorial in test/development environment only. **
+**Please note that it is recommended to try this tutorial in test/development environment only.**
 
 ![Idle-AWS](idleaws.png)
 
