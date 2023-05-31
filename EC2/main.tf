@@ -1,5 +1,5 @@
 resource "aws_iam_role" "idle_resource_lambda_role" {
-  name = "idle_resource_lambda_role"
+  name = "${var.function_name}_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -16,7 +16,7 @@ resource "aws_iam_role" "idle_resource_lambda_role" {
 }
 
 resource "aws_iam_role_policy" "lambda_ec2_policy" {
-  name = "idle_resource_lambda_ec2_policy"
+  name = "${var.function_name}_policy"
   role = aws_iam_role.idle_resource_lambda_role.id
 
   policy = jsonencode({
@@ -51,7 +51,7 @@ data "archive_file" "lambda" {
 
 resource "aws_lambda_function" "idle_ec2_instance_function" {
   filename      = "lambda_function.zip"  # replace with your zip file
-  function_name = "idle_ec2_instance_function"
+  function_name = var.function_name
   role          = aws_iam_role.idle_resource_lambda_role.arn
   handler       = "lambda_function.lambda_handler"
   timeout       = 40
