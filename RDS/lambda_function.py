@@ -35,11 +35,11 @@ def lambda_handler(event, context):
                 break
 
         if is_idle:
-            print(f"RDS instance {db_instance_id} has been idle for the past hour. Stopping the instance.")
+            print(f"RDS instance {db_instance_id} has been idle. Stopping the instance.")
             # Stop the instance
             rds.stop_db_instance(DBInstanceIdentifier=db_instance_id)
         else:
-            print(f"RDS instance {db_instance_id} has active connections in the past hour.")
+            print(f"RDS instance {db_instance_id} has active connections.")
 
     return {
         'statusCode': 200,
